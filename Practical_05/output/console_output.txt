@@ -1,0 +1,17 @@
+API Error: 403 Client Error: Forbidden for url: https://api.github.com/users?since=0&per_page=10
+Live API call failed (likely shared rate limit) - using a small local fallback sample so the rest of the pipeline can still run.
+
+--- Merged ETL Pipeline Data View ---
+   id     name                    html_url      city
+0   1   user_1   https://github.com/user_1  New York
+1   2   user_2   https://github.com/user_2    London
+2   3   user_3   https://github.com/user_3     Paris
+3   4   user_4   https://github.com/user_4     Tokyo
+4   5   user_5   https://github.com/user_5    Berlin
+5   6   user_6   https://github.com/user_6     Delhi
+6   7   user_7   https://github.com/user_7    Sydney
+7   8   user_8   https://github.com/user_8    Moscow
+8   9   user_9   https://github.com/user_9     Cairo
+9  10  user_10  https://github.com/user_10   Beijing
+
+Data successfully saved to 'output/cleaned_warehouse_profiles.csv'

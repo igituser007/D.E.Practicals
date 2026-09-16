@@ -1,0 +1,9 @@
+order_id,category,product,quantity,sales_amount
+1,Stationery,Pen,10,100
+2,Stationery,Notebook,5,200
+3,Electronics,USB Drive,3,900
+4,Electronics,Mouse,7,1400
+5,Stationery,Pen,10,100
+6,Grocery,Rice,20,1000
+7,Electronics,Mouse,2,400
+8,Grocery,Wheat,15,750

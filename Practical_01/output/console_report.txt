@@ -1,0 +1,83 @@
+============================================================
+PART 1: Parsing Different File Formats
+============================================================
+
+[TXT] Raw content:
+Data Engineering Lab
+Student: Prachi
+Roll No: 12
+
+
+[CSV] Parsed rows:
+{'id': '1', 'name': 'Amit', 'age': '21', 'marks': '85'}
+{'id': '2', 'name': 'Riya', 'age': '', 'marks': '90'}
+{'id': '3', 'name': 'Neha', 'age': '-5', 'marks': '78'}
+{'id': '4', 'name': 'Karan', 'age': '22', 'marks': '999'}
+
+[CSV] Missing values / anomalies found:
+  Row id=2 (Riya): missing age
+  Row id=3 (Neha): anomalous age (-5)
+  Row id=4 (Karan): anomalous marks (999)
+
+[HTML] Parsed table rows:
+['id', 'name', 'city']
+['1', 'Amit', 'Pune']
+['2', 'Riya', '']
+
+[HTML] Missing values found:
+  Row ['2', 'Riya', '']: missing 'city'
+
+[XML] Parsed students:
+  id=1 name=Amit age=21
+  id=2 name=Riya age=None
+    -> missing 'age' element for student id=2
+
+[JSON] Parsed records:
+{'id': 1, 'name': 'Amit', 'age': 21}
+{'id': 2, 'name': 'Riya'}
+{'id': 3, 'name': 'Neha', 'age': 'twenty'}
+
+[JSON] Missing values / anomalies found:
+  id=2: missing 'age' field
+  id=3: 'age' has an unexpected type ('twenty')
+
+============================================================
+PART 2: Reading and Writing Binary Files
+============================================================
+
+Wrote 5 integers to output/numbers.bin
+Header read back: b'NUMS'
+Numbers read back: [10, 20, 30, 40, 50]
+Matches what was written: True
+
+============================================================
+PART 3: Regular Expressions
+============================================================
+
+Search - emails found: ['support@example.com', 'sales@example.org']
+Search - phone number found: 9876543210
+
+Split - sentences: ['Contact us at support@example', 'com or sales@example', 'org for help', 'Phone: 9876543210']
+
+Replace - masked text: Contact us at [EMAIL HIDDEN] or [EMAIL HIDDEN] for help. Phone: 9876543210.
+
+============================================================
+PART 4: Relational Database - Design + CRUD
+============================================================
+
+Table 'students' created.
+Inserted 3 rows (CREATE).
+
+All students (READ):
+  (1, 'Amit', 21, 85)
+  (2, 'Riya', 22, 90)
+  (3, 'Neha', 23, 78)
+
+Updated Amit's marks to 95 (UPDATE).
+  After update: (1, 'Amit', 21, 95)
+
+Deleted Neha's record (DELETE).
+
+Final table contents:
+  (1, 'Amit', 21, 95)
+  (2, 'Riya', 22, 90)

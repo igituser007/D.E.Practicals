@@ -1,0 +1,10 @@
+[2026-09-12T09:21:24.836+0000] {taskinstance.py:2330} INFO - Executing <Task(EmptyOperator): start_pipeline> on 2026-01-01 00:00:00+00:00
+[2026-09-12T09:21:24.848+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=university_etl_orchestration, task_id=start_pipeline, run_id=__airflow_temporary_run_2026-09-12T09:21:24.806436+00:00__, execution_date=20260101T000000, start_date=, end_date=20260912T092124
+[2026-09-12T09:21:26.750+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): run_extraction_script> on 2026-01-01 00:00:00+00:00
+[2026-09-12T09:21:26.766+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', "echo 'Running extraction script...' && echo 'Extraction complete.'"]
+[2026-09-12T09:21:26.778+0000] {subprocess.py:93} INFO - Running extraction script...
+[2026-09-12T09:21:26.789+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=university_etl_orchestration, task_id=run_extraction_script, run_id=__airflow_temporary_run_2026-09-12T09:21:26.671154+00:00__, execution_date=20260101T000000, start_date=, end_date=20260912T092126
+[2026-09-12T09:21:28.640+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): log_pipeline_success> on 2026-01-01 00:00:00+00:00
+[2026-09-12T09:21:28.653+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'echo "ETL Execution completed successfully at $(date)"']
+[2026-09-12T09:21:28.662+0000] {subprocess.py:93} INFO - ETL Execution completed successfully at Sat Sep 12 09:21:28 UTC 2026
+[2026-09-12T09:21:28.670+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=university_etl_orchestration, task_id=log_pipeline_success, run_id=__airflow_temporary_run_2026-09-12T09:21:28.611579+00:00__, execution_date=20260101T000000, start_date=, end_date=20260912T092128

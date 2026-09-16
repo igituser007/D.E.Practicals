@@ -1,0 +1,57 @@
+============================================================
+TASK 1 & 2: E-commerce ETL Pipeline (CSV -> Clean -> SQL -> Report)
+============================================================
+
+Raw orders:
+   order_id  customer_id  product_id  quantity
+0      1001            1         101         5
+1      1002            2         102         2
+2      1003            3         999         1
+3      1004            4         103        -1
+
+Cleaned orders (invalid product_id / quantity removed):
+   order_id  customer_id  product_id  quantity
+0      1001            1         101         5
+1      1002            2         102         2
+
+Merged e-commerce fact table:
+   order_id  customer_id  product_id  ...  amount_paid status order_total
+0      1001            1         101  ...         50.0   paid        50.0
+1      1002            2         102  ...         80.0   paid        80.0
+
+[2 rows x 11 columns]
+
+Report - Revenue by city:
+     city  total_revenue
+0  Mumbai           80.0
+1    Pune           50.0
+
+============================================================
+TASK 3: Pipeline Handling Historical + Newly Arriving Data
+============================================================
+
+Historical orders already in the warehouse: [1001, 1002]
+
+New batch received:
+   order_id  customer_id  product_id  quantity
+0      1002            2         102         3
+1      1005            1         101         2
+2      1006            4         103         1
+
+Rows actually appended (duplicates of history skipped):
+   order_id  customer_id  product_id  ...  amount_paid   status order_total
+0      1005            1         101  ...         None  pending        20.0
+1      1006            4         103  ...         None  pending       500.0
+
+[2 rows x 11 columns]
+
+Final fact_orders table after historical + incremental load:
+   order_id  customer_id  product_id  ...  amount_paid   status order_total
+0      1001            1         101  ...         50.0     paid        50.0
+1      1002            2         102  ...         80.0     paid        80.0
+2      1005            1         101  ...          NaN  pending        20.0
+3      1006            4         103  ...          NaN  pending       500.0
+
+[4 rows x 11 columns]
+
+All tasks complete. Database saved to output/ecommerce_warehouse.db

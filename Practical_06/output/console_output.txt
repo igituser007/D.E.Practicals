@@ -1,0 +1,122 @@
+=== TASK 1: start_pipeline ===
+[[34m2026-09-12T09:21:24.461+0000[0m] {[34mdagbag.py:[0m545} INFO[0m - Filling up the DagBag from /home/claude/Practical_Submission/Practical_06/airflow_home/dags[0m
+[[34m2026-09-12T09:21:24.586+0000[0m] {[34mexample_kubernetes_executor.py:[0m39} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2026-09-12T09:21:24.644+0000[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 38, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2026-09-12T09:21:24.644+0000[0m] {[34mexample_local_kubernetes_executor.py:[0m41} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2026-09-12T09:21:24.782+0000[0m] {[34mdagbag.py:[0m355} ERROR[0m - Failed to import: /home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/example_dags/tutorial_objectstorage.py[0m
+Traceback (most recent call last):
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/example_dags/tutorial_objectstorage.py", line 46, in <module>
+    base = ObjectStoragePath("s3://aws_default@airflow-tutorial-data/")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/upath/core.py", line 164, in __call__
+    inst = cls.__new__(cls, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/upath/core.py", line 469, in __new__
+    raise _IncompatibleProtocolError(msg)
+TypeError: ObjectStoragePath(...) detected protocol s3 which is incompatible with ObjectStoragePath.
+[[34m2026-09-12T09:21:24.786+0000[0m] {[34mexample_python_decorator.py:[0m80} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+[[34m2026-09-12T09:21:24.787+0000[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2026-09-12T09:21:24.791+0000[0m] {[34mexample_python_operator.py:[0m93} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+[[34m2026-09-12T09:21:24.798+0000[0m] {[34mworkday.py:[0m41} WARNING[0m - Could not import pandas. Holidays will not be considered.[0m
+[[34m2026-09-12T09:21:24.831+0000[0m] {[34mtaskinstance.py:[0m2076} INFO[0m - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: university_etl_orchestration.start_pipeline __airflow_temporary_run_2026-09-12T09:21:24.806436+00:00__ [None]>[0m
+[[34m2026-09-12T09:21:24.835+0000[0m] {[34mtaskinstance.py:[0m2076} INFO[0m - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: university_etl_orchestration.start_pipeline __airflow_temporary_run_2026-09-12T09:21:24.806436+00:00__ [None]>[0m
+[[34m2026-09-12T09:21:24.835+0000[0m] {[34mtaskinstance.py:[0m2306} INFO[0m - Starting attempt 1 of 2[0m
+[[34m2026-09-12T09:21:24.835+0000[0m] {[34mtaskinstance.py:[0m2388} WARNING[0m - cannot record queued_duration for task start_pipeline because previous state change time has not been saved[0m
+[[34m2026-09-12T09:21:24.836+0000[0m] {[34mtaskinstance.py:[0m2330} INFO[0m - Executing <Task(EmptyOperator): start_pipeline> on 2026-01-01 00:00:00+00:00[0m
+[[34m2026-09-12T09:21:24.847+0000[0m] {[34mtaskinstance.py:[0m2648} INFO[0m - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineering_lab' AIRFLOW_CTX_DAG_ID='university_etl_orchestration' AIRFLOW_CTX_TASK_ID='start_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2026-01-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='__airflow_temporary_run_2026-09-12T09:21:24.806436+00:00__'[0m
+[[34m2026-09-12T09:21:24.848+0000[0m] {[34mtaskinstance.py:[0m430} INFO[0m - ::endgroup::[0m
+[[34m2026-09-12T09:21:24.848+0000[0m] {[34mtaskinstance.py:[0m441} INFO[0m - ::group::Post task execution logs[0m
+[[34m2026-09-12T09:21:24.848+0000[0m] {[34mtaskinstance.py:[0m1206} INFO[0m - Marking task as SUCCESS. dag_id=university_etl_orchestration, task_id=start_pipeline, run_id=__airflow_temporary_run_2026-09-12T09:21:24.806436+00:00__, execution_date=20260101T000000, start_date=, end_date=20260912T092124[0m
+=== TASK 2: run_extraction_script ===
+[[34m2026-09-12T09:21:26.226+0000[0m] {[34mdagbag.py:[0m545} INFO[0m - Filling up the DagBag from /home/claude/Practical_Submission/Practical_06/airflow_home/dags[0m
+[[34m2026-09-12T09:21:26.355+0000[0m] {[34mexample_kubernetes_executor.py:[0m39} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2026-09-12T09:21:26.463+0000[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 38, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2026-09-12T09:21:26.463+0000[0m] {[34mexample_local_kubernetes_executor.py:[0m41} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2026-09-12T09:21:26.644+0000[0m] {[34mdagbag.py:[0m355} ERROR[0m - Failed to import: /home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/example_dags/tutorial_objectstorage.py[0m
+Traceback (most recent call last):
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/example_dags/tutorial_objectstorage.py", line 46, in <module>
+    base = ObjectStoragePath("s3://aws_default@airflow-tutorial-data/")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/upath/core.py", line 164, in __call__
+    inst = cls.__new__(cls, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/upath/core.py", line 469, in __new__
+    raise _IncompatibleProtocolError(msg)
+TypeError: ObjectStoragePath(...) detected protocol s3 which is incompatible with ObjectStoragePath.
+[[34m2026-09-12T09:21:26.648+0000[0m] {[34mexample_python_decorator.py:[0m80} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+[[34m2026-09-12T09:21:26.649+0000[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2026-09-12T09:21:26.654+0000[0m] {[34mexample_python_operator.py:[0m93} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+[[34m2026-09-12T09:21:26.662+0000[0m] {[34mworkday.py:[0m41} WARNING[0m - Could not import pandas. Holidays will not be considered.[0m
+[[34m2026-09-12T09:21:26.745+0000[0m] {[34mtaskinstance.py:[0m2076} INFO[0m - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: university_etl_orchestration.run_extraction_script __airflow_temporary_run_2026-09-12T09:21:26.671154+00:00__ [None]>[0m
+[[34m2026-09-12T09:21:26.749+0000[0m] {[34mtaskinstance.py:[0m2076} INFO[0m - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: university_etl_orchestration.run_extraction_script __airflow_temporary_run_2026-09-12T09:21:26.671154+00:00__ [None]>[0m
+[[34m2026-09-12T09:21:26.749+0000[0m] {[34mtaskinstance.py:[0m2306} INFO[0m - Starting attempt 1 of 2[0m
+[[34m2026-09-12T09:21:26.749+0000[0m] {[34mtaskinstance.py:[0m2388} WARNING[0m - cannot record queued_duration for task run_extraction_script because previous state change time has not been saved[0m
+[[34m2026-09-12T09:21:26.750+0000[0m] {[34mtaskinstance.py:[0m2330} INFO[0m - Executing <Task(BashOperator): run_extraction_script> on 2026-01-01 00:00:00+00:00[0m
+[[34m2026-09-12T09:21:26.763+0000[0m] {[34mtaskinstance.py:[0m2648} INFO[0m - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineering_lab' AIRFLOW_CTX_DAG_ID='university_etl_orchestration' AIRFLOW_CTX_TASK_ID='run_extraction_script' AIRFLOW_CTX_EXECUTION_DATE='2026-01-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='__airflow_temporary_run_2026-09-12T09:21:26.671154+00:00__'[0m
+[[34m2026-09-12T09:21:26.765+0000[0m] {[34mtaskinstance.py:[0m430} INFO[0m - ::endgroup::[0m
+[[34m2026-09-12T09:21:26.765+0000[0m] {[34msubprocess.py:[0m63} INFO[0m - Tmp dir root location: /tmp[0m
+[[34m2026-09-12T09:21:26.766+0000[0m] {[34msubprocess.py:[0m75} INFO[0m - Running command: ['/usr/bin/bash', '-c', "echo 'Running extraction script...' && echo 'Extraction complete.'"][0m
+[[34m2026-09-12T09:21:26.776+0000[0m] {[34msubprocess.py:[0m86} INFO[0m - Output:[0m
+[[34m2026-09-12T09:21:26.778+0000[0m] {[34msubprocess.py:[0m93} INFO[0m - Running extraction script...[0m
+[[34m2026-09-12T09:21:26.778+0000[0m] {[34msubprocess.py:[0m93} INFO[0m - Extraction complete.[0m
+[[34m2026-09-12T09:21:26.778+0000[0m] {[34msubprocess.py:[0m97} INFO[0m - Command exited with return code 0[0m
+[[34m2026-09-12T09:21:26.779+0000[0m] {[34mtaskinstance.py:[0m441} INFO[0m - ::group::Post task execution logs[0m
+[[34m2026-09-12T09:21:26.789+0000[0m] {[34mtaskinstance.py:[0m1206} INFO[0m - Marking task as SUCCESS. dag_id=university_etl_orchestration, task_id=run_extraction_script, run_id=__airflow_temporary_run_2026-09-12T09:21:26.671154+00:00__, execution_date=20260101T000000, start_date=, end_date=20260912T092126[0m
+=== TASK 3: log_pipeline_success ===
+[[34m2026-09-12T09:21:28.265+0000[0m] {[34mdagbag.py:[0m545} INFO[0m - Filling up the DagBag from /home/claude/Practical_Submission/Practical_06/airflow_home/dags[0m
+[[34m2026-09-12T09:21:28.398+0000[0m] {[34mexample_kubernetes_executor.py:[0m39} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2026-09-12T09:21:28.454+0000[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 38, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2026-09-12T09:21:28.454+0000[0m] {[34mexample_local_kubernetes_executor.py:[0m41} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2026-09-12T09:21:28.587+0000[0m] {[34mdagbag.py:[0m355} ERROR[0m - Failed to import: /home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/example_dags/tutorial_objectstorage.py[0m
+Traceback (most recent call last):
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/airflow/example_dags/tutorial_objectstorage.py", line 46, in <module>
+    base = ObjectStoragePath("s3://aws_default@airflow-tutorial-data/")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/upath/core.py", line 164, in __call__
+    inst = cls.__new__(cls, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/Practical_Submission/Practical_06/airflow_venv/lib/python3.12/site-packages/upath/core.py", line 469, in __new__
+    raise _IncompatibleProtocolError(msg)
+TypeError: ObjectStoragePath(...) detected protocol s3 which is incompatible with ObjectStoragePath.
+[[34m2026-09-12T09:21:28.591+0000[0m] {[34mexample_python_decorator.py:[0m80} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+[[34m2026-09-12T09:21:28.592+0000[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2026-09-12T09:21:28.596+0000[0m] {[34mexample_python_operator.py:[0m93} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+[[34m2026-09-12T09:21:28.603+0000[0m] {[34mworkday.py:[0m41} WARNING[0m - Could not import pandas. Holidays will not be considered.[0m
+[[34m2026-09-12T09:21:28.636+0000[0m] {[34mtaskinstance.py:[0m2076} INFO[0m - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: university_etl_orchestration.log_pipeline_success __airflow_temporary_run_2026-09-12T09:21:28.611579+00:00__ [None]>[0m
+[[34m2026-09-12T09:21:28.639+0000[0m] {[34mtaskinstance.py:[0m2076} INFO[0m - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: university_etl_orchestration.log_pipeline_success __airflow_temporary_run_2026-09-12T09:21:28.611579+00:00__ [None]>[0m
+[[34m2026-09-12T09:21:28.640+0000[0m] {[34mtaskinstance.py:[0m2306} INFO[0m - Starting attempt 1 of 2[0m
+[[34m2026-09-12T09:21:28.640+0000[0m] {[34mtaskinstance.py:[0m2388} WARNING[0m - cannot record queued_duration for task log_pipeline_success because previous state change time has not been saved[0m
+[[34m2026-09-12T09:21:28.640+0000[0m] {[34mtaskinstance.py:[0m2330} INFO[0m - Executing <Task(BashOperator): log_pipeline_success> on 2026-01-01 00:00:00+00:00[0m
+[[34m2026-09-12T09:21:28.651+0000[0m] {[34mtaskinstance.py:[0m2648} INFO[0m - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineering_lab' AIRFLOW_CTX_DAG_ID='university_etl_orchestration' AIRFLOW_CTX_TASK_ID='log_pipeline_success' AIRFLOW_CTX_EXECUTION_DATE='2026-01-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='__airflow_temporary_run_2026-09-12T09:21:28.611579+00:00__'[0m
+[[34m2026-09-12T09:21:28.652+0000[0m] {[34mtaskinstance.py:[0m430} INFO[0m - ::endgroup::[0m
+[[34m2026-09-12T09:21:28.653+0000[0m] {[34msubprocess.py:[0m63} INFO[0m - Tmp dir root location: /tmp[0m
+[[34m2026-09-12T09:21:28.653+0000[0m] {[34msubprocess.py:[0m75} INFO[0m - Running command: ['/usr/bin/bash', '-c', 'echo "ETL Execution completed successfully at $(date)"'][0m
+[[34m2026-09-12T09:21:28.659+0000[0m] {[34msubprocess.py:[0m86} INFO[0m - Output:[0m
+[[34m2026-09-12T09:21:28.662+0000[0m] {[34msubprocess.py:[0m93} INFO[0m - ETL Execution completed successfully at Sat Sep 12 09:21:28 UTC 2026[0m
+[[34m2026-09-12T09:21:28.663+0000[0m] {[34msubprocess.py:[0m97} INFO[0m - Command exited with return code 0[0m
+[[34m2026-09-12T09:21:28.663+0000[0m] {[34mtaskinstance.py:[0m441} INFO[0m - ::group::Post task execution logs[0m
+[[34m2026-09-12T09:21:28.670+0000[0m] {[34mtaskinstance.py:[0m1206} INFO[0m - Marking task as SUCCESS. dag_id=university_etl_orchestration, task_id=log_pipeline_success, run_id=__airflow_temporary_run_2026-09-12T09:21:28.611579+00:00__, execution_date=20260101T000000, start_date=, end_date=20260912T092128[0m

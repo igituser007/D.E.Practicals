@@ -1,0 +1,4 @@
+order_id,amount_paid,status
+1001,50.0,paid
+1002,80.0,paid
+1004,500.0,paid

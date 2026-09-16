@@ -1,0 +1,5 @@
+customer_name,city,product_name,category,sale_date,quantity,unit_price
+Riya,Pune,Pen,Stationery,2026-01-05,10,10.00
+Amit,Mumbai,Notebook,Stationery,2026-01-05,5,40.00
+Neha,Pune,Mouse,Electronics,2026-02-10,2,700.00
+Riya,Pune,Notebook,Stationery,2026-02-10,-3,40.00

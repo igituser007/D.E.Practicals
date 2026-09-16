@@ -1,0 +1,38 @@
+Original Data:
+   Name   Age  Marks
+0  Amit  22.0   85.0
+1  Riya  24.0   90.0
+2  Amit  22.0   85.0
+3  Neha   NaN   78.0
+4   NaN  26.0    NaN
+
+Handling Missing Values...
+      Name   Age  Marks
+0     Amit  22.0   85.0
+1     Riya  24.0   90.0
+2     Amit  22.0   85.0
+3     Neha  23.5   78.0
+4  Unknown  26.0   84.5
+
+Removing Duplicates...
+      Name   Age  Marks
+0     Amit  22.0   85.0
+1     Riya  24.0   90.0
+3     Neha  23.5   78.0
+4  Unknown  26.0   84.5
+
+Normalizing Age and Marks...
+      Name   Age  Marks  Age_Normalized  Marks_Normalized
+0     Amit  22.0   85.0           0.000          0.583333
+1     Riya  24.0   90.0           0.500          1.000000
+3     Neha  23.5   78.0           0.375          0.000000
+4  Unknown  26.0   84.5           1.000          0.541667
+
+Final Processed Data:
+      Name   Age  Marks  Age_Normalized  Marks_Normalized
+0     Amit  22.0   85.0           0.000          0.583333
+1     Riya  24.0   90.0           0.500          1.000000
+3     Neha  23.5   78.0           0.375          0.000000
+4  Unknown  26.0   84.5           1.000          0.541667
+
+Saved cleaned data to output/cleaned_data.csv

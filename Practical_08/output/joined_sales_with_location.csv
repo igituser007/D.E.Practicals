@@ -1,0 +1,8 @@
+category,order_id,product,quantity,sales_amount,aisle_location
+Stationery,2,Notebook,5,200,Aisle 1
+Stationery,1,Pen,10,100,Aisle 1
+Electronics,4,Mouse,7,1400,Aisle 2
+Electronics,3,USB Drive,3,900,Aisle 2
+Electronics,7,Mouse,2,400,Aisle 2
+Grocery,8,Wheat,15,750,Aisle 3
+Grocery,6,Rice,20,1000,Aisle 3

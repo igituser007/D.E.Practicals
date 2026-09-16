@@ -1,0 +1,54 @@
+============================================================
+STEP 1: EXTRACTION - reading raw source data
+============================================================
+
+Raw extracted data:
+  customer_name    city product_name  ...   sale_date quantity  unit_price
+0          Riya    Pune          Pen  ...  2026-01-05       10        10.0
+1          Amit  Mumbai     Notebook  ...  2026-01-05        5        40.0
+2          Neha    Pune        Mouse  ...  2026-02-10        2       700.0
+3          Riya    Pune     Notebook  ...  2026-02-10       -3        40.0
+
+[4 rows x 7 columns]
+
+============================================================
+STEP 2: TRANSFORMATION - cleaning and shaping for the warehouse
+============================================================
+
+Removed 1 invalid row(s) (non-positive quantity).
+
+Transformed data:
+  customer_name    city product_name  ... unit_price revenue  date_key
+0          Riya    Pune          Pen  ...       10.0   100.0  20260105
+1          Amit  Mumbai     Notebook  ...       40.0   200.0  20260105
+2          Neha    Pune        Mouse  ...      700.0  1400.0  20260210
+
+[3 rows x 9 columns]
+
+============================================================
+STEP 3: LOADING - building the star-schema warehouse
+============================================================
+
+Warehouse tables created: DimCustomer, DimProduct, DimDate, FactSales
+
+DimProduct:
+   product_key product_name     category
+0            0          Pen   Stationery
+1            1     Notebook   Stationery
+2            2        Mouse  Electronics
+
+FactSales:
+   customer_key  product_key  date_key  quantity  unit_price  revenue
+0             0            0  20260105        10        10.0    100.0
+1             1            1  20260105         5        40.0    200.0
+2             2            2  20260210         2       700.0   1400.0
+
+============================================================
+STEP 4: Example report - total revenue by product category
+============================================================
+
+       category  total_revenue
+0  Electronics         1400.0
+1   Stationery          300.0
+
+All steps complete. Warehouse saved to output/sales_dw.db

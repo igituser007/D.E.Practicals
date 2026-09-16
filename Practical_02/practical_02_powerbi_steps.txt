@@ -1,0 +1,61 @@
+Practical 02 - Loading the Warehouse into Power BI (Steps, Not Executable Here)
+===================================================================================
+
+Power BI Desktop is a Windows-only graphical application with no scripting
+or command-line interface for its core "Get Data" / transform / load
+workflow, so it cannot be run or automated in this sandbox. Below are the
+actual steps you would follow in your own Power BI Desktop to load and
+report on the Sales_DW warehouse built in this practical (either the real
+SQL Server version from practical_02_sqlserver.sql, or the SQLite file
+in output/sales_dw.db as a stand-in).
+
+STEP 1 - CONNECT
+------------------
+1. Open Power BI Desktop.
+2. Home ribbon -> Get Data.
+3. Choose the matching source:
+   - "SQL Server" if you ran practical_02_sqlserver.sql on a real SQL
+     Server instance - enter your server name and select the Sales_DW
+     database.
+   - "Text/CSV", pointed at output/revenue_by_category.csv, if you just
+     want to bring in the already-aggregated report from this practical.
+4. Select the DimCustomer, DimProduct, DimDate, and FactSales tables (or
+   the CSV) and choose Load (or Transform Data first, if you want to
+   clean anything further in Power Query Editor).
+
+STEP 2 - CHECK / BUILD RELATIONSHIPS
+---------------------------------------
+1. Switch to Model view.
+2. Power BI will usually auto-detect the relationships between FactSales
+   and each dimension table, based on the matching key columns
+   (customer_key, product_key, date_key).
+3. If a relationship wasn't detected automatically, drag from the key
+   column in FactSales to the matching key column in the dimension
+   table to create it manually.
+
+STEP 3 - BUILD A REPORT
+--------------------------
+1. Switch to Report view.
+2. Drag "category" from DimProduct and "revenue" from FactSales onto a
+   blank canvas area - Power BI creates a table by default.
+3. Change the visualization type to a Bar Chart or Column Chart from the
+   Visualizations pane to see revenue by category as a chart.
+4. Add a second visual: drag "city" from DimCustomer and "revenue" from
+   FactSales to see revenue by city.
+5. Click on a bar in one chart - Power BI automatically cross-filters the
+   other visuals to match, which is useful for exploring the data
+   interactively.
+
+EXPECTED OUTPUT (cannot be captured as a screenshot here)
+-------------------------------------------------------------
+Based on the data loaded by practical_02_etl.py, a "revenue by category"
+chart built this way would show Electronics as the highest bar (1400),
+followed by Stationery (300) - matching output/revenue_by_category.csv
+from this practical.
+
+WHY THIS PART WASN'T EXECUTED
+----------------------------------
+Power BI Desktop requires a Windows GUI environment and cannot be
+installed, run, or automated from this Linux command-line sandbox. This
+document describes the correct steps rather than fabricating a
+screenshot or output that wasn't actually produced.

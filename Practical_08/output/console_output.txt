@@ -1,0 +1,128 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/12 09:23:05 WARN Utils: Your hostname, vm, resolves to a loopback address: 127.0.0.1; using 192.0.2.2 instead (on interface eth0)
+26/09/12 09:23:05 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+/usr/local/lib/python3.12/dist-packages/pyspark/testing/utils.py:127: FutureWarning: PySpark does not yet fully support pandas >= 3.0.0. Some features may not work correctly. It is recommended to use pandas < 3.0.0 for now.
+  require_minimum_pandas_version()
+26/09/12 09:23:07 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+============================================================
+TASK 1: Read CSV and Display Schema
+============================================================
+root
+ |-- order_id: integer (nullable = true)
+ |-- category: string (nullable = true)
+ |-- product: string (nullable = true)
+ |-- quantity: integer (nullable = true)
+ |-- sales_amount: integer (nullable = true)
+
++--------+-----------+---------+--------+------------+
+|order_id|   category|  product|quantity|sales_amount|
++--------+-----------+---------+--------+------------+
+|       1| Stationery|      Pen|      10|         100|
+|       2| Stationery| Notebook|       5|         200|
+|       3|Electronics|USB Drive|       3|         900|
+|       4|Electronics|    Mouse|       7|        1400|
+|       5| Stationery|      Pen|      10|         100|
+|       6|    Grocery|     Rice|      20|        1000|
+|       7|Electronics|    Mouse|       2|         400|
+|       8|    Grocery|    Wheat|      15|         750|
++--------+-----------+---------+--------+------------+
+
+============================================================
+TASK 2: Filtering, Grouping, and Aggregation
+============================================================
+
+Filter: orders with sales_amount > 500
++--------+-----------+---------+--------+------------+
+|order_id|   category|  product|quantity|sales_amount|
++--------+-----------+---------+--------+------------+
+|       3|Electronics|USB Drive|       3|         900|
+|       4|Electronics|    Mouse|       7|        1400|
+|       6|    Grocery|     Rice|      20|        1000|
+|       8|    Grocery|    Wheat|      15|         750|
++--------+-----------+---------+--------+------------+
+
+Group + Aggregate: total sales_amount per category
++-----------+-----------+
+|   category|total_sales|
++-----------+-----------+
+| Stationery|        400|
+|    Grocery|       1750|
+|Electronics|       2700|
++-----------+-----------+
+
+============================================================
+TASK 3: Remove Duplicate Records
+============================================================
+
+Before removing duplicates:
++--------+-----------+---------+--------+------------+
+|order_id|   category|  product|quantity|sales_amount|
++--------+-----------+---------+--------+------------+
+|       1| Stationery|      Pen|      10|         100|
+|       2| Stationery| Notebook|       5|         200|
+|       3|Electronics|USB Drive|       3|         900|
+|       4|Electronics|    Mouse|       7|        1400|
+|       5| Stationery|      Pen|      10|         100|
+|       6|    Grocery|     Rice|      20|        1000|
+|       7|Electronics|    Mouse|       2|         400|
+|       8|    Grocery|    Wheat|      15|         750|
++--------+-----------+---------+--------+------------+
+
+After removing duplicates (order_id 1 and 5 were identical apart from id):
++--------+-----------+---------+--------+------------+
+|order_id|   category|  product|quantity|sales_amount|
++--------+-----------+---------+--------+------------+
+|       1| Stationery|      Pen|      10|         100|
+|       7|Electronics|    Mouse|       2|         400|
+|       3|Electronics|USB Drive|       3|         900|
+|       6|    Grocery|     Rice|      20|        1000|
+|       8|    Grocery|    Wheat|      15|         750|
+|       4|Electronics|    Mouse|       7|        1400|
+|       2| Stationery| Notebook|       5|         200|
++--------+-----------+---------+--------+------------+
+
+============================================================
+TASK 4: Join Between Two Datasets
+============================================================
+
+Joined dataset (sales + aisle location):
+[Stage 14:>                                                         (0 + 1) / 1]                                                                                +-----------+--------+---------+--------+------------+--------------+
+|   category|order_id|  product|quantity|sales_amount|aisle_location|
++-----------+--------+---------+--------+------------+--------------+
+| Stationery|       2| Notebook|       5|         200|       Aisle 1|
+| Stationery|       1|      Pen|      10|         100|       Aisle 1|
+|Electronics|       4|    Mouse|       7|        1400|       Aisle 2|
+|Electronics|       3|USB Drive|       3|         900|       Aisle 2|
+|Electronics|       7|    Mouse|       2|         400|       Aisle 2|
+|    Grocery|       8|    Wheat|      15|         750|       Aisle 3|
+|    Grocery|       6|     Rice|      20|        1000|       Aisle 3|
++-----------+--------+---------+--------+------------+--------------+
+
+============================================================
+TASK 5: Average Sales by Product Category
+============================================================
++-----------+----------------+
+|   category|avg_sales_amount|
++-----------+----------------+
+|Electronics|           900.0|
+|    Grocery|           875.0|
+| Stationery|           150.0|
++-----------+----------------+
+
+/usr/local/lib/python3.12/dist-packages/pyspark/sql/pandas/conversion.py:298: FutureWarning: PySpark does not yet fully support pandas >= 3.0.0. Some features may not work correctly. It is recommended to use pandas < 3.0.0 for now.
+  require_minimum_pandas_version()
+/usr/local/lib/python3.12/dist-packages/pyspark/sql/pandas/conversion.py:348: UserWarning: toPandas attempted Arrow optimization because 'spark.sql.execution.arrow.pyspark.enabled' is set to true; however, failed by the reason below:
+  [PACKAGE_NOT_INSTALLED] PyArrow >= 18.0.0 must be installed; however, it was not found.
+Attempting non-optimization as 'spark.sql.execution.arrow.pyspark.fallback.enabled' is set to true.
+  warn(msg)
+/usr/local/lib/python3.12/dist-packages/pyspark/sql/pandas/conversion.py:298: FutureWarning: PySpark does not yet fully support pandas >= 3.0.0. Some features may not work correctly. It is recommended to use pandas < 3.0.0 for now.
+  require_minimum_pandas_version()
+/usr/local/lib/python3.12/dist-packages/pyspark/sql/pandas/conversion.py:348: UserWarning: toPandas attempted Arrow optimization because 'spark.sql.execution.arrow.pyspark.enabled' is set to true; however, failed by the reason below:
+  [PACKAGE_NOT_INSTALLED] PyArrow >= 18.0.0 must be installed; however, it was not found.
+Attempting non-optimization as 'spark.sql.execution.arrow.pyspark.fallback.enabled' is set to true.
+  warn(msg)
+Saved avg_sales_by_category.csv and joined_sales_with_location.csv to output/

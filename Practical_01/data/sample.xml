@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<students>
+  <student id="1"><name>Amit</name><age>21</age></student>
+  <student id="2"><name>Riya</name></student>
+</students>

@@ -1,0 +1,87 @@
+============================================================
+STAGE 1: DATA INGESTION
+============================================================
+
+Ingested 10 raw sales rows and 6 raw customer rows.
+
+Raw sales sample:
+   sale_id  customer_id   product  ... quantity  unit_price   sale_date
+0        1            1       Pen  ...     10.0          10  2026-01-05
+1        2            2  Notebook  ...      5.0          40  2026-01-06
+2        3            1       Pen  ...     10.0          10  2026-01-05
+3        4            3     Mouse  ...      2.0         700  2026-01-07
+4        5            4       Bag  ...      1.0         500  2026-01-08
+5        6            2  Notebook  ...      NaN          40  2026-01-09
+6        7            5     Mouse  ...     -1.0         700  2026-01-10
+7        8            1       Bag  ...      2.0         500  2026-02-01
+8        9            3       Pen  ...     20.0          10  2026-02-02
+9       10            6  Notebook  ...      3.0          40  2026-02-03
+
+[10 rows x 7 columns]
+
+============================================================
+STAGE 2: DATA CLEANING
+============================================================
+
+Removed 3 rows (duplicates, missing/invalid quantity).
+
+Cleaned sales:
+   sale_id  customer_id   product  ... quantity  unit_price   sale_date
+0        1            1       Pen  ...     10.0          10  2026-01-05
+1        2            2  Notebook  ...      5.0          40  2026-01-06
+3        4            3     Mouse  ...      2.0         700  2026-01-07
+4        5            4       Bag  ...      1.0         500  2026-01-08
+7        8            1       Bag  ...      2.0         500  2026-02-01
+8        9            3       Pen  ...     20.0          10  2026-02-02
+9       10            6  Notebook  ...      3.0          40  2026-02-03
+
+[7 rows x 7 columns]
+
+============================================================
+STAGE 3: TRANSFORMATION
+============================================================
+
+Transformed sales (added sale_month and revenue):
+   sale_id  customer_id   product  ...  sale_date  sale_month  revenue
+0        1            1       Pen  ... 2026-01-05     2026-01    100.0
+1        2            2  Notebook  ... 2026-01-06     2026-01    200.0
+3        4            3     Mouse  ... 2026-01-07     2026-01   1400.0
+4        5            4       Bag  ... 2026-01-08     2026-01    500.0
+7        8            1       Bag  ... 2026-02-01     2026-02   1000.0
+8        9            3       Pen  ... 2026-02-02     2026-02    200.0
+9       10            6  Notebook  ... 2026-02-03     2026-02    120.0
+
+[7 rows x 9 columns]
+
+============================================================
+STAGE 4 & 5: STORAGE INTO A STAR-SCHEMA DATA WAREHOUSE
+============================================================
+
+Warehouse tables created: dim_customers, dim_products, fact_sales
+
+dim_products:
+   product_key   product     category
+0            0       Pen   Stationery
+1            1  Notebook   Stationery
+2            2     Mouse  Electronics
+3            3       Bag  Accessories
+
+============================================================
+STAGE 6: REPORTING
+============================================================
+
+Revenue by city and category:
+     city     category  total_revenue  total_units
+0    Pune  Accessories         1500.0          3.0
+1   Delhi  Electronics         1400.0          2.0
+2   Delhi   Stationery          320.0         23.0
+3  Mumbai   Stationery          200.0          5.0
+4    Pune   Stationery          100.0         10.0
+
+Revenue by month:
+  sale_month  total_revenue
+0    2026-01         2200.0
+1    2026-02         1320.0
+
+Saved reports (CSV) and charts (PNG) to the output/ folder.
+Mini project pipeline complete.

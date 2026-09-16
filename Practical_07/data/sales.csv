@@ -1,0 +1,6 @@
+order_id,product,quantity,price
+1,Pen,10.0,10.0
+2,Notebook,5.0,40.0
+3,Pen,-2.0,10.0
+4,,3.0,25.0
+5,Eraser,,5.0

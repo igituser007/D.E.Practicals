@@ -1,0 +1,90 @@
+============================================================
+TASK 1: Extract from CSV -> Clean -> Transform -> Store in DB
+============================================================
+
+Extracted:
+   order_id   product  quantity  price
+0         1       Pen      10.0   10.0
+1         2  Notebook       5.0   40.0
+2         3       Pen      -2.0   10.0
+3         4       NaN       3.0   25.0
+4         5    Eraser       NaN    5.0
+
+Cleaned & Transformed:
+   order_id   product  quantity  price  total
+0         1       Pen      10.0   10.0  100.0
+1         2  Notebook       5.0   40.0  200.0
+4         5    Eraser       0.0    5.0    0.0
+
+Stored in database table 'sales'.
+
+============================================================
+TASK 2: Extract from Multiple CSVs and Combine
+============================================================
+
+Combined dataset from multiple CSVs:
+   order_id    product  quantity  price
+0         6      Ruler         4   15.0
+1         7  Sharpener         8    8.0
+2         8     Pencil        12    5.0
+3         9       Glue         2   30.0
+
+============================================================
+TASK 3: Extract JSON -> Transform Selected Fields -> Load to DB
+============================================================
+
+Selected fields from JSON:
+   customer_id  name    city  signup_year
+0            1  Aman    Pune         2023
+1            2  Sara  Mumbai         2024
+
+Stored in database table 'customers'.
+
+============================================================
+TASK 4: Identify and Remove Invalid Records
+============================================================
+
+Raw records:
+   record_id         email  age
+0          1    a@test.com   25
+1          2  not-an-email   -5
+2          3    b@test.com   40
+3          4                 30
+4          5    c@test.com  200
+
+Invalid records identified (bad email or out-of-range age):
+   record_id         email  age
+1          2  not-an-email   -5
+3          4                 30
+4          5    c@test.com  200
+
+Valid records kept:
+   record_id       email  age
+0          1  a@test.com   25
+2          3  b@test.com   40
+
+============================================================
+TASK 5: Validate Data Before Loading into Target Database
+============================================================
+
+2 of 5 rows passed validation and were loaded.
+
+============================================================
+TASK 6: Incremental Data Loading
+============================================================
+
+Day 1 load (full load):
+   txn_id  amount
+0     101     500
+1     102     750
+2     103     300
+
+Day 2 incremental load (only new rows appended):
+   txn_id  amount
+0     101     500
+1     102     750
+2     103     300
+3     104     620
+4     105     410
+
+All tasks complete. Database saved to output/etl_practical.db
