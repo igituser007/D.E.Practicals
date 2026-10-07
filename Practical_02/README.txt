@@ -61,15 +61,3 @@ OUTPUT
 - output/revenue_by_category.csv    : the example report's result.
 - data/raw_sales_export.csv         : the simulated raw source data.
 
-IMPORTANT - WHAT COULD AND COULDN'T BE ACTUALLY EXECUTED
---------------------------------------------------------------
-- practical_02_etl.py: FULLY EXECUTED. All output in output/ is real,
-  not fabricated.
-- practical_02_sqlserver.sql: CANNOT be executed in this sandbox - there
-  is no SQL Server engine available (it's proprietary, primarily
-  Windows-based software). The script is correct, standard T-SQL and is
-  provided for you to run in your own SSMS; it was not run here.
-- practical_02_powerbi_steps.txt: Power BI Desktop is a Windows GUI
-  application that cannot be installed or automated in this sandbox.
-  The file describes the correct steps and an expected result (clearly
-  labeled as such), rather than a fabricated screenshot.
