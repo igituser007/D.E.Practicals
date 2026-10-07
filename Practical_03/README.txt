@@ -32,6 +32,3 @@ OUTPUT
   expected - this was executed).
 - output/cleaned_data.csv   : the final cleaned + normalized dataset.
 
-NOTES
------
-No special setup required; this practical runs anywhere pandas is installed.
