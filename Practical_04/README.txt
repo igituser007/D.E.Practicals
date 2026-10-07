@@ -12,11 +12,6 @@ SOFTWARE / LIBRARIES REQUIRED
 - Python 3
 - pandas, numpy, matplotlib, scikit-learn
 
-FILE TO RUN
------------
-practical_04.py
-
-    python3 practical_04.py
 
 WHAT THE CODE DOES
 -------------------
@@ -33,7 +28,4 @@ OUTPUT
 - output/histogram.png       : histograms of Age, Marks, Attendance.
 - output/boxplot.png         : boxplot of the same features.
 
-NOTES
------
-matplotlib is run in the non-interactive "Agg" backend so plots can be
-saved to file without needing a display.
+
